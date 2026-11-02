@@ -1,0 +1,10 @@
+:{$PORT:80} {
+    root * /app
+    encode gzip
+
+    route {
+        @private path /database.sql /README.txt /Dockerfile /Caddyfile /config/* /includes/* /data/* /.env* /.git*
+        respond @private 404
+        php_server
+    }
+}
